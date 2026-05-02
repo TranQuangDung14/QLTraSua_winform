@@ -1,0 +1,245 @@
+namespace QuanLyBanHang.GUI
+{
+    partial class frmThongKeDoanhThu
+    {
+        private System.ComponentModel.IContainer components = null;
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        private void InitializeComponent()
+        {
+            panelBoLoc = new Panel();
+            btnDong = new Button();
+            btnThongKe = new Button();
+            dtpDenNgay = new DateTimePicker();
+            labelDenNgay = new Label();
+            dtpTuNgay = new DateTimePicker();
+            labelTuNgay = new Label();
+            panelTongHop = new Panel();
+            cardTrungBinh = new Panel();
+            lblTrungBinh = new Label();
+            labelTrungBinh = new Label();
+            cardTongTien = new Panel();
+            lblTongDoanhThu = new Label();
+            labelTongTien = new Label();
+            cardSoHoaDon = new Panel();
+            lblSoHoaDon = new Label();
+            labelSoHoaDon = new Label();
+            dgvThongKe = new DataGridView();
+            lblThongBao = new Label();
+            panelBoLoc.SuspendLayout();
+            panelTongHop.SuspendLayout();
+            cardTrungBinh.SuspendLayout();
+            cardTongTien.SuspendLayout();
+            cardSoHoaDon.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvThongKe).BeginInit();
+            SuspendLayout();
+            panelBoLoc.BackColor = Color.White;
+            panelBoLoc.Controls.Add(btnDong);
+            panelBoLoc.Controls.Add(btnThongKe);
+            panelBoLoc.Controls.Add(dtpDenNgay);
+            panelBoLoc.Controls.Add(labelDenNgay);
+            panelBoLoc.Controls.Add(dtpTuNgay);
+            panelBoLoc.Controls.Add(labelTuNgay);
+            panelBoLoc.Location = new Point(18, 18);
+            panelBoLoc.Name = "panelBoLoc";
+            panelBoLoc.Size = new Size(1060, 88);
+            panelBoLoc.TabIndex = 0;
+            btnDong.BackColor = Color.FromArgb(71, 85, 105);
+            btnDong.FlatAppearance.BorderSize = 0;
+            btnDong.FlatStyle = FlatStyle.Flat;
+            btnDong.ForeColor = Color.White;
+            btnDong.Location = new Point(939, 25);
+            btnDong.Name = "btnDong";
+            btnDong.Size = new Size(95, 38);
+            btnDong.TabIndex = 5;
+            btnDong.Text = "Đóng";
+            btnDong.UseVisualStyleBackColor = false;
+            btnDong.Click += btnDong_Click;
+            btnThongKe.BackColor = Color.FromArgb(13, 148, 136);
+            btnThongKe.FlatAppearance.BorderSize = 0;
+            btnThongKe.FlatStyle = FlatStyle.Flat;
+            btnThongKe.ForeColor = Color.White;
+            btnThongKe.Location = new Point(821, 25);
+            btnThongKe.Name = "btnThongKe";
+            btnThongKe.Size = new Size(104, 38);
+            btnThongKe.TabIndex = 4;
+            btnThongKe.Text = "Thống kê";
+            btnThongKe.UseVisualStyleBackColor = false;
+            btnThongKe.Click += btnThongKe_Click;
+            dtpDenNgay.Format = DateTimePickerFormat.Short;
+            dtpDenNgay.Location = new Point(529, 31);
+            dtpDenNgay.Name = "dtpDenNgay";
+            dtpDenNgay.Size = new Size(140, 25);
+            dtpDenNgay.TabIndex = 3;
+            labelDenNgay.AutoSize = true;
+            labelDenNgay.Location = new Point(451, 34);
+            labelDenNgay.Name = "labelDenNgay";
+            labelDenNgay.Size = new Size(67, 19);
+            labelDenNgay.TabIndex = 2;
+            labelDenNgay.Text = "Đến ngày";
+            dtpTuNgay.Format = DateTimePickerFormat.Short;
+            dtpTuNgay.Location = new Point(127, 31);
+            dtpTuNgay.Name = "dtpTuNgay";
+            dtpTuNgay.Size = new Size(140, 25);
+            dtpTuNgay.TabIndex = 1;
+            labelTuNgay.AutoSize = true;
+            labelTuNgay.Location = new Point(48, 34);
+            labelTuNgay.Name = "labelTuNgay";
+            labelTuNgay.Size = new Size(58, 19);
+            labelTuNgay.TabIndex = 0;
+            labelTuNgay.Text = "Từ ngày";
+            panelTongHop.Controls.Add(cardTrungBinh);
+            panelTongHop.Controls.Add(cardTongTien);
+            panelTongHop.Controls.Add(cardSoHoaDon);
+            panelTongHop.Location = new Point(18, 122);
+            panelTongHop.Name = "panelTongHop";
+            panelTongHop.Size = new Size(1060, 132);
+            panelTongHop.TabIndex = 1;
+            cardTrungBinh.BackColor = Color.White;
+            cardTrungBinh.Controls.Add(lblTrungBinh);
+            cardTrungBinh.Controls.Add(labelTrungBinh);
+            cardTrungBinh.Location = new Point(720, 10);
+            cardTrungBinh.Name = "cardTrungBinh";
+            cardTrungBinh.Size = new Size(314, 110);
+            cardTrungBinh.TabIndex = 2;
+            lblTrungBinh.AutoSize = true;
+            lblTrungBinh.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTrungBinh.ForeColor = Color.FromArgb(15, 118, 110);
+            lblTrungBinh.Location = new Point(22, 49);
+            lblTrungBinh.Name = "lblTrungBinh";
+            lblTrungBinh.Size = new Size(76, 32);
+            lblTrungBinh.TabIndex = 1;
+            lblTrungBinh.Text = "0 VNĐ";
+            labelTrungBinh.AutoSize = true;
+            labelTrungBinh.ForeColor = Color.FromArgb(71, 85, 105);
+            labelTrungBinh.Location = new Point(22, 18);
+            labelTrungBinh.Name = "labelTrungBinh";
+            labelTrungBinh.Size = new Size(142, 19);
+            labelTrungBinh.TabIndex = 0;
+            labelTrungBinh.Text = "Giá trị trung bình/HĐ";
+            cardTongTien.BackColor = Color.White;
+            cardTongTien.Controls.Add(lblTongDoanhThu);
+            cardTongTien.Controls.Add(labelTongTien);
+            cardTongTien.Location = new Point(373, 10);
+            cardTongTien.Name = "cardTongTien";
+            cardTongTien.Size = new Size(314, 110);
+            cardTongTien.TabIndex = 1;
+            lblTongDoanhThu.AutoSize = true;
+            lblTongDoanhThu.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTongDoanhThu.ForeColor = Color.FromArgb(15, 118, 110);
+            lblTongDoanhThu.Location = new Point(22, 49);
+            lblTongDoanhThu.Name = "lblTongDoanhThu";
+            lblTongDoanhThu.Size = new Size(76, 32);
+            lblTongDoanhThu.TabIndex = 1;
+            lblTongDoanhThu.Text = "0 VNĐ";
+            labelTongTien.AutoSize = true;
+            labelTongTien.ForeColor = Color.FromArgb(71, 85, 105);
+            labelTongTien.Location = new Point(22, 18);
+            labelTongTien.Name = "labelTongTien";
+            labelTongTien.Size = new Size(108, 19);
+            labelTongTien.TabIndex = 0;
+            labelTongTien.Text = "Tổng doanh thu";
+            cardSoHoaDon.BackColor = Color.White;
+            cardSoHoaDon.Controls.Add(lblSoHoaDon);
+            cardSoHoaDon.Controls.Add(labelSoHoaDon);
+            cardSoHoaDon.Location = new Point(26, 10);
+            cardSoHoaDon.Name = "cardSoHoaDon";
+            cardSoHoaDon.Size = new Size(314, 110);
+            cardSoHoaDon.TabIndex = 0;
+            lblSoHoaDon.AutoSize = true;
+            lblSoHoaDon.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lblSoHoaDon.ForeColor = Color.FromArgb(15, 118, 110);
+            lblSoHoaDon.Location = new Point(22, 49);
+            lblSoHoaDon.Name = "lblSoHoaDon";
+            lblSoHoaDon.Size = new Size(28, 32);
+            lblSoHoaDon.TabIndex = 1;
+            lblSoHoaDon.Text = "0";
+            labelSoHoaDon.AutoSize = true;
+            labelSoHoaDon.ForeColor = Color.FromArgb(71, 85, 105);
+            labelSoHoaDon.Location = new Point(22, 18);
+            labelSoHoaDon.Name = "labelSoHoaDon";
+            labelSoHoaDon.Size = new Size(77, 19);
+            labelSoHoaDon.TabIndex = 0;
+            labelSoHoaDon.Text = "Số hóa đơn";
+            dgvThongKe.AllowUserToAddRows = false;
+            dgvThongKe.AllowUserToDeleteRows = false;
+            dgvThongKe.BackgroundColor = Color.White;
+            dgvThongKe.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvThongKe.Location = new Point(18, 274);
+            dgvThongKe.MultiSelect = false;
+            dgvThongKe.Name = "dgvThongKe";
+            dgvThongKe.ReadOnly = true;
+            dgvThongKe.RowHeadersVisible = false;
+            dgvThongKe.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvThongKe.Size = new Size(1060, 360);
+            dgvThongKe.TabIndex = 2;
+            lblThongBao.AutoSize = true;
+            lblThongBao.ForeColor = Color.FromArgb(13, 148, 136);
+            lblThongBao.Location = new Point(26, 649);
+            lblThongBao.Name = "lblThongBao";
+            lblThongBao.Size = new Size(166, 19);
+            lblThongBao.TabIndex = 3;
+            lblThongBao.Text = "Sẵn sàng tải báo cáo mới.";
+            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = Color.FromArgb(240, 253, 250);
+            ClientSize = new Size(1096, 688);
+            Controls.Add(lblThongBao);
+            Controls.Add(dgvThongKe);
+            Controls.Add(panelTongHop);
+            Controls.Add(panelBoLoc);
+            Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+            Name = "frmThongKeDoanhThu";
+            StartPosition = FormStartPosition.CenterParent;
+            Text = "Thống kê doanh thu";
+            Load += frmThongKeDoanhThu_Load;
+            panelBoLoc.ResumeLayout(false);
+            panelBoLoc.PerformLayout();
+            panelTongHop.ResumeLayout(false);
+            cardTrungBinh.ResumeLayout(false);
+            cardTrungBinh.PerformLayout();
+            cardTongTien.ResumeLayout(false);
+            cardTongTien.PerformLayout();
+            cardSoHoaDon.ResumeLayout(false);
+            cardSoHoaDon.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvThongKe).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private Panel panelBoLoc;
+        private Button btnDong;
+        private Button btnThongKe;
+        private DateTimePicker dtpDenNgay;
+        private Label labelDenNgay;
+        private DateTimePicker dtpTuNgay;
+        private Label labelTuNgay;
+        private Panel panelTongHop;
+        private Panel cardTrungBinh;
+        private Label lblTrungBinh;
+        private Label labelTrungBinh;
+        private Panel cardTongTien;
+        private Label lblTongDoanhThu;
+        private Label labelTongTien;
+        private Panel cardSoHoaDon;
+        private Label lblSoHoaDon;
+        private Label labelSoHoaDon;
+        private DataGridView dgvThongKe;
+        private Label lblThongBao;
+    }
+}
