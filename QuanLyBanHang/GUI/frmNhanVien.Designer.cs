@@ -328,7 +328,7 @@ namespace QuanLyBanHang.GUI
             lblThongBao.AutoSize = true;
             lblThongBao.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
             lblThongBao.ForeColor = Color.FromArgb(13, 148, 136);
-            lblThongBao.Location = new Point(31, 652);
+            lblThongBao.Location = new Point(31, 684);
             lblThongBao.MaximumSize = new Size(380, 0);
             lblThongBao.Name = "lblThongBao";
             lblThongBao.Size = new Size(159, 19);
@@ -341,7 +341,7 @@ namespace QuanLyBanHang.GUI
             btnDong.FlatStyle = FlatStyle.Flat;
             btnDong.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
             btnDong.ForeColor = Color.FromArgb(51, 65, 85);
-            btnDong.Location = new Point(216, 591);
+            btnDong.Location = new Point(216, 625);
             btnDong.Name = "btnDong";
             btnDong.Size = new Size(150, 42);
             btnDong.TabIndex = 22;
@@ -355,7 +355,7 @@ namespace QuanLyBanHang.GUI
             btnLamMoi.FlatStyle = FlatStyle.Flat;
             btnLamMoi.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
             btnLamMoi.ForeColor = Color.FromArgb(51, 65, 85);
-            btnLamMoi.Location = new Point(31, 591);
+            btnLamMoi.Location = new Point(31, 625);
             btnLamMoi.Name = "btnLamMoi";
             btnLamMoi.Size = new Size(150, 42);
             btnLamMoi.TabIndex = 21;
@@ -370,7 +370,7 @@ namespace QuanLyBanHang.GUI
             btnXoa.FlatStyle = FlatStyle.Flat;
             btnXoa.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
             btnXoa.ForeColor = Color.White;
-            btnXoa.Location = new Point(323, 536);
+            btnXoa.Location = new Point(323, 570);
             btnXoa.Name = "btnXoa";
             btnXoa.Size = new Size(88, 42);
             btnXoa.TabIndex = 20;
@@ -385,7 +385,7 @@ namespace QuanLyBanHang.GUI
             btnSua.FlatStyle = FlatStyle.Flat;
             btnSua.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
             btnSua.ForeColor = Color.White;
-            btnSua.Location = new Point(175, 536);
+            btnSua.Location = new Point(175, 570);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(88, 42);
             btnSua.TabIndex = 19;
@@ -400,7 +400,7 @@ namespace QuanLyBanHang.GUI
             btnThem.FlatStyle = FlatStyle.Flat;
             btnThem.Font = new Font("Segoe UI Semibold", 10F, FontStyle.Bold, GraphicsUnit.Point);
             btnThem.ForeColor = Color.White;
-            btnThem.Location = new Point(31, 536);
+            btnThem.Location = new Point(31, 570);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(88, 42);
             btnThem.TabIndex = 18;

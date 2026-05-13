@@ -18,7 +18,7 @@ namespace QuanLyBanHang.DAL
                     cthd.ThanhTien,
                     hd.NgayLap,
                     ISNULL(nv.HoTen, '') AS HoTenNhanVien,
-                    ISNULL(kh.HoTen, 'Khách lẻ') AS HoTenKhachHang
+                    ISNULL(kh.HoTen, N'Khách lẻ') AS HoTenKhachHang
                 FROM ChiTietHoaDon cthd
                 INNER JOIN HoaDon hd ON hd.MaHD = cthd.MaHD
                 LEFT JOIN SanPham sp ON sp.MaSP = cthd.MaSP
@@ -27,7 +27,7 @@ namespace QuanLyBanHang.DAL
                 WHERE (@TuKhoa = ''
                     OR CONVERT(VARCHAR(20), cthd.MaHD) LIKE '%' + @TuKhoa + '%'
                     OR ISNULL(sp.TenSP, '') LIKE '%' + @TuKhoa + '%'
-                    OR ISNULL(kh.HoTen, 'Khách lẻ') LIKE '%' + @TuKhoa + '%')
+                    OR ISNULL(kh.HoTen, N'Khách lẻ') LIKE '%' + @TuKhoa + '%')
                 ORDER BY cthd.MaHD DESC, cthd.MaCTHD DESC;
                 """;
 

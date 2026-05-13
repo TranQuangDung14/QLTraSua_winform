@@ -10,6 +10,7 @@ namespace QuanLyBanHang.GUI
         public frmThongKeDoanhThu()
         {
             InitializeComponent();
+            ResponsiveLayout.Configure(this);
         }
 
         private async void frmThongKeDoanhThu_Load(object sender, EventArgs e)

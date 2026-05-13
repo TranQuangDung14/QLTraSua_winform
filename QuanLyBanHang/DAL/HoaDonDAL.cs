@@ -15,13 +15,13 @@ namespace QuanLyBanHang.DAL
                     hd.NgayLap,
                     hd.TongTien,
                     ISNULL(nv.HoTen, '') AS HoTenNhanVien,
-                    ISNULL(kh.HoTen, 'Khách lẻ') AS HoTenKhachHang
+                    ISNULL(kh.HoTen, N'Khách lẻ') AS HoTenKhachHang
                 FROM HoaDon hd
                 LEFT JOIN NhanVien nv ON nv.MaNV = hd.MaNV
                 LEFT JOIN KhachHang kh ON kh.MaKH = hd.MaKH
                 WHERE (@TuKhoa = ''
                     OR CONVERT(VARCHAR(20), hd.MaHD) LIKE '%' + @TuKhoa + '%'
-                    OR ISNULL(kh.HoTen, 'Khách lẻ') LIKE '%' + @TuKhoa + '%')
+                    OR ISNULL(kh.HoTen, N'Khách lẻ') LIKE '%' + @TuKhoa + '%')
                 ORDER BY hd.MaHD DESC;
                 """;
 

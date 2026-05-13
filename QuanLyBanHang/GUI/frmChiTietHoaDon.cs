@@ -11,6 +11,7 @@ namespace QuanLyBanHang.GUI
         public frmChiTietHoaDon()
         {
             InitializeComponent();
+            ResponsiveLayout.Configure(this);
         }
 
         private async void frmChiTietHoaDon_Load(object sender, EventArgs e)

@@ -24,6 +24,7 @@ namespace QuanLyBanHang.GUI
             lblTimKiem = new Label();
             lblTieuDe = new Label();
             panelEditor = new Panel();
+            panelMoTaBorder = new Panel();
             txtMoTa = new TextBox();
             lblMoTa = new Label();
             nudSoLuong = new NumericUpDown();
@@ -114,7 +115,7 @@ namespace QuanLyBanHang.GUI
             // panelEditor
             // 
             panelEditor.BackColor = Color.White;
-            panelEditor.Controls.Add(txtMoTa);
+            panelEditor.Controls.Add(panelMoTaBorder);
             panelEditor.Controls.Add(lblMoTa);
             panelEditor.Controls.Add(nudSoLuong);
             panelEditor.Controls.Add(lblSoLuong);
@@ -141,15 +142,27 @@ namespace QuanLyBanHang.GUI
             panelEditor.Size = new Size(430, 670);
             panelEditor.TabIndex = 1;
             // 
+            // panelMoTaBorder
+            // 
+            panelMoTaBorder.BackColor = Color.White;
+            panelMoTaBorder.BorderStyle = BorderStyle.FixedSingle;
+            panelMoTaBorder.Controls.Add(txtMoTa);
+            panelMoTaBorder.Location = new Point(31, 365);
+            panelMoTaBorder.Name = "panelMoTaBorder";
+            panelMoTaBorder.Padding = new Padding(8);
+            panelMoTaBorder.Size = new Size(355, 90);
+            panelMoTaBorder.TabIndex = 11;
+            // 
             // txtMoTa
             // 
-            txtMoTa.BorderStyle = BorderStyle.FixedSingle;
-            txtMoTa.Location = new Point(31, 365);
+            txtMoTa.BorderStyle = BorderStyle.None;
+            txtMoTa.Dock = DockStyle.Fill;
+            txtMoTa.Location = new Point(8, 8);
             txtMoTa.Multiline = true;
             txtMoTa.Name = "txtMoTa";
             txtMoTa.PlaceholderText = "Nhập mô tả sản phẩm";
-            txtMoTa.Size = new Size(355, 90);
-            txtMoTa.TabIndex = 11;
+            txtMoTa.Size = new Size(337, 72);
+            txtMoTa.TabIndex = 0;
             // 
             // lblMoTa
             // 
@@ -403,6 +416,8 @@ namespace QuanLyBanHang.GUI
             Load += frmSanPham_Load;
             panelTop.ResumeLayout(false);
             panelTop.PerformLayout();
+            panelMoTaBorder.ResumeLayout(false);
+            panelMoTaBorder.PerformLayout();
             panelEditor.ResumeLayout(false);
             panelEditor.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nudSoLuong).EndInit();
@@ -419,6 +434,7 @@ namespace QuanLyBanHang.GUI
         private Label lblTimKiem;
         private Label lblTieuDe;
         private Panel panelEditor;
+        private Panel panelMoTaBorder;
         private TextBox txtMoTa;
         private Label lblMoTa;
         private NumericUpDown nudSoLuong;

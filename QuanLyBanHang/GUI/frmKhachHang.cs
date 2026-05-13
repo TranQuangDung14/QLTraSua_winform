@@ -12,6 +12,7 @@ namespace QuanLyBanHang.GUI
         public frmKhachHang()
         {
             InitializeComponent();
+            ResponsiveLayout.Configure(this);
         }
 
         private async void frmKhachHang_Load(object sender, EventArgs e)
@@ -98,16 +99,22 @@ namespace QuanLyBanHang.GUI
 
         private async void btnSua_Click(object sender, EventArgs e)
         {
+            if (!int.TryParse(txtMaKH.Text, out var maKH) || maKH <= 0)
+            {
+                BaoLoi("Vui lòng chọn khách hàng cần sửa.");
+                return;
+            }
+
             try
             {
                 await _khachHangBus.CapNhatAsync(
-                    int.TryParse(txtMaKH.Text, out var maKH) ? maKH : 0,
+                    maKH,
                     txtHoTen.Text,
                     txtSoDienThoai.Text,
                     txtDiaChi.Text);
 
                 await TaiDanhSachAsync(txtTimKiem.Text);
-                TimDongTheoMa(txtMaKH.Text);
+                TimDongTheoMa(maKH.ToString());
                 ThongBao("Cập nhật khách hàng thành công.");
             }
             catch (ArgumentException ex)

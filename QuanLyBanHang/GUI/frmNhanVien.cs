@@ -12,6 +12,7 @@ namespace QuanLyBanHang.GUI
         public frmNhanVien()
         {
             InitializeComponent();
+            ResponsiveLayout.Configure(this);
             cboGioiTinh.SelectedIndex = 0;
             cboQuyen.SelectedIndex = 0;
         }
@@ -142,10 +143,16 @@ namespace QuanLyBanHang.GUI
 
         private async void btnSua_Click(object sender, EventArgs e)
         {
+            if (!int.TryParse(txtMaNV.Text, out var maNV) || maNV <= 0)
+            {
+                BaoLoi("Vui lòng chọn nhân viên cần sửa.");
+                return;
+            }
+
             try
             {
                 await _nhanVienBus.CapNhatAsync(
-                    int.TryParse(txtMaNV.Text, out var maNV) ? maNV : 0,
+                    maNV,
                     txtHoTen.Text,
                     cboGioiTinh.Text,
                     dtpNgaySinh.Checked ? dtpNgaySinh.Value.Date : null,
@@ -157,7 +164,7 @@ namespace QuanLyBanHang.GUI
                     cboQuyen.Text);
 
                 await TaiDanhSachAsync(txtTimKiem.Text);
-                TimDongTheoMa(txtMaNV.Text);
+                TimDongTheoMa(maNV.ToString());
                 ThongBao("Cập nhật nhân viên thành công.");
             }
             catch (ArgumentException ex)

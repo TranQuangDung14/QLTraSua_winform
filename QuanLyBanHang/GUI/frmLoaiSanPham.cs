@@ -12,6 +12,7 @@ namespace QuanLyBanHang.GUI
         public frmLoaiSanPham()
         {
             InitializeComponent();
+            ResponsiveLayout.Configure(this);
         }
 
         private async void frmLoaiSanPham_Load(object sender, EventArgs e)
@@ -92,14 +93,20 @@ namespace QuanLyBanHang.GUI
 
         private async void btnSua_Click(object sender, EventArgs e)
         {
+            if (!int.TryParse(txtMaLoai.Text, out var maLoai) || maLoai <= 0)
+            {
+                BaoLoi("Vui lòng chọn loại sản phẩm cần sửa.");
+                return;
+            }
+
             try
             {
                 await _loaiSanPhamBus.CapNhatAsync(
-                    int.TryParse(txtMaLoai.Text, out var maLoai) ? maLoai : 0,
+                    maLoai,
                     txtTenLoai.Text);
 
                 await TaiDanhSachAsync(txtTimKiem.Text);
-                TimDongTheoMa(txtMaLoai.Text);
+                TimDongTheoMa(maLoai.ToString());
                 ThongBao("Cập nhật loại sản phẩm thành công.");
             }
             catch (ArgumentException ex)

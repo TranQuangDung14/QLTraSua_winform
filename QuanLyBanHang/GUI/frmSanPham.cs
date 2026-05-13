@@ -14,6 +14,7 @@ namespace QuanLyBanHang.GUI
         public frmSanPham()
         {
             InitializeComponent();
+            ResponsiveLayout.Configure(this);
         }
 
         private async void frmSanPham_Load(object sender, EventArgs e)
@@ -135,10 +136,16 @@ namespace QuanLyBanHang.GUI
 
         private async void btnSua_Click(object sender, EventArgs e)
         {
+            if (!int.TryParse(txtMaSP.Text, out var maSP) || maSP <= 0)
+            {
+                BaoLoi("Vui lòng chọn sản phẩm cần sửa.");
+                return;
+            }
+
             try
             {
                 await _sanPhamBus.CapNhatAsync(
-                    int.TryParse(txtMaSP.Text, out var maSP) ? maSP : 0,
+                    maSP,
                     txtTenSP.Text,
                     GetMaLoai(),
                     GetMaNCC(),
@@ -147,7 +154,7 @@ namespace QuanLyBanHang.GUI
                     txtMoTa.Text);
 
                 await TaiDanhSachAsync(txtTimKiem.Text);
-                TimDongTheoMa(txtMaSP.Text);
+                TimDongTheoMa(maSP.ToString());
                 ThongBao("Cập nhật sản phẩm thành công.");
             }
             catch (ArgumentException ex)

@@ -10,6 +10,7 @@ namespace QuanLyBanHang.GUI
         public frmTrangChu(string hoTen, string quyen)
         {
             InitializeComponent();
+            ResponsiveLayout.Configure(this);
             lblHoTen.Text = hoTen;
             lblQuyen.Text = quyen;
             lblLoiChao.Text = $"Xin chào, {hoTen}";

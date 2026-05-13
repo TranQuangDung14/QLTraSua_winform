@@ -16,6 +16,7 @@ namespace QuanLyBanHang.GUI
         public frmHoaDon()
         {
             InitializeComponent();
+            ResponsiveLayout.Configure(this);
         }
 
         private async void frmHoaDon_Load(object sender, EventArgs e)

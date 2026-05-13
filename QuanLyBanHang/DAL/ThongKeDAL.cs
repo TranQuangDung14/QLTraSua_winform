@@ -53,7 +53,7 @@ namespace QuanLyBanHang.DAL
                     hd.NgayLap,
                     hd.TongTien,
                     ISNULL(nv.HoTen, '') AS HoTenNhanVien,
-                    ISNULL(kh.HoTen, 'Khách lẻ') AS HoTenKhachHang
+                    ISNULL(kh.HoTen, N'Khách lẻ') AS HoTenKhachHang
                 FROM HoaDon hd
                 LEFT JOIN NhanVien nv ON nv.MaNV = hd.MaNV
                 LEFT JOIN KhachHang kh ON kh.MaKH = hd.MaKH

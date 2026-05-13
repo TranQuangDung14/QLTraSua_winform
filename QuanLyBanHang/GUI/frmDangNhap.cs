@@ -9,6 +9,7 @@ namespace QuanLyBanHang.GUI
         public frmDangNhap()
         {
             InitializeComponent();
+            ResponsiveLayout.Configure(this);
             cboQuyen.SelectedIndex = 0;
             txtTenDangNhap.Select();
         }
