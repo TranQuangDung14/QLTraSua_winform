@@ -213,6 +213,8 @@ namespace QuanLyBanHang.GUI
                 panelEditor.AutoScroll = true;
                 panelEditor.AutoScrollMargin = new Size(0, 24);
             }
+
+            form.Padding = new Padding(0, 0, 0, 56);
         }
 
         private static void SetAnchor(Control root, string name, AnchorStyles anchor)
