@@ -43,7 +43,7 @@ namespace QuanLyBanHang.GUI
         {
             foreach (Control child in parent.Controls)
             {
-                if (child is TextBox textBox && textBox.Name.StartsWith("txtMa", StringComparison.Ordinal))
+                if (child is TextBox textBox && IsIdentityTextBoxName(textBox.Name))
                 {
                     textBox.ReadOnly = true;
                     textBox.TabStop = false;
@@ -52,6 +52,13 @@ namespace QuanLyBanHang.GUI
 
                 ConfigureIdentityTextBoxes(child);
             }
+        }
+
+        private static bool IsIdentityTextBoxName(string name)
+        {
+            return name.StartsWith("txtMa", StringComparison.Ordinal)
+                && name.Length > 5
+                && char.IsUpper(name[5]);
         }
 
         private static void AnchorEditorInputs(Form form)
