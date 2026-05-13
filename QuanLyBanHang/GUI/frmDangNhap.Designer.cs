@@ -98,7 +98,6 @@ namespace QuanLyBanHang.GUI
             panelLogin.Controls.Add(lblMatKhau);
             panelLogin.Controls.Add(txtTenDangNhap);
             panelLogin.Controls.Add(lblTenDangNhap);
-            panelLogin.Controls.Add(labelTaiKhoanMau);
             panelLogin.Controls.Add(lblTieuDe);
             panelLogin.Dock = DockStyle.Fill;
             panelLogin.Location = new Point(380, 0);
@@ -111,7 +110,7 @@ namespace QuanLyBanHang.GUI
             lblThongBao.AutoSize = true;
             lblThongBao.Font = new Font("Segoe UI", 10.5F, FontStyle.Regular, GraphicsUnit.Point);
             lblThongBao.ForeColor = Color.FromArgb(13, 148, 136);
-            lblThongBao.Location = new Point(53, 450);
+            lblThongBao.Location = new Point(53, 410);
             lblThongBao.Name = "lblThongBao";
             lblThongBao.Size = new Size(234, 19);
             lblThongBao.TabIndex = 11;
@@ -123,7 +122,7 @@ namespace QuanLyBanHang.GUI
             btnThoat.FlatStyle = FlatStyle.Flat;
             btnThoat.Font = new Font("Segoe UI Semibold", 10.5F, FontStyle.Bold, GraphicsUnit.Point);
             btnThoat.ForeColor = Color.FromArgb(51, 65, 85);
-            btnThoat.Location = new Point(235, 500);
+            btnThoat.Location = new Point(235, 460);
             btnThoat.Name = "btnThoat";
             btnThoat.Size = new Size(160, 44);
             btnThoat.TabIndex = 5;
@@ -138,7 +137,7 @@ namespace QuanLyBanHang.GUI
             btnDangNhap.FlatStyle = FlatStyle.Flat;
             btnDangNhap.Font = new Font("Segoe UI Semibold", 10.5F, FontStyle.Bold, GraphicsUnit.Point);
             btnDangNhap.ForeColor = Color.White;
-            btnDangNhap.Location = new Point(53, 500);
+            btnDangNhap.Location = new Point(53, 460);
             btnDangNhap.Name = "btnDangNhap";
             btnDangNhap.Size = new Size(160, 44);
             btnDangNhap.TabIndex = 4;
@@ -150,7 +149,7 @@ namespace QuanLyBanHang.GUI
             // 
             chkHienMatKhau.AutoSize = true;
             chkHienMatKhau.ForeColor = Color.FromArgb(51, 65, 85);
-            chkHienMatKhau.Location = new Point(53, 409);
+            chkHienMatKhau.Location = new Point(53, 369);
             chkHienMatKhau.Name = "chkHienMatKhau";
             chkHienMatKhau.Size = new Size(127, 23);
             chkHienMatKhau.TabIndex = 3;
@@ -163,7 +162,7 @@ namespace QuanLyBanHang.GUI
             cboQuyen.DropDownStyle = ComboBoxStyle.DropDownList;
             cboQuyen.FormattingEnabled = true;
             cboQuyen.Items.AddRange(new object[] { "Admin", "Nhân viên" });
-            cboQuyen.Location = new Point(53, 353);
+            cboQuyen.Location = new Point(53, 313);
             cboQuyen.Name = "cboQuyen";
             cboQuyen.Size = new Size(342, 25);
             cboQuyen.TabIndex = 2;
@@ -174,7 +173,7 @@ namespace QuanLyBanHang.GUI
             lblQuyen.AutoSize = true;
             lblQuyen.Font = new Font("Segoe UI Semibold", 10.5F, FontStyle.Bold, GraphicsUnit.Point);
             lblQuyen.ForeColor = Color.FromArgb(30, 41, 59);
-            lblQuyen.Location = new Point(53, 324);
+            lblQuyen.Location = new Point(53, 284);
             lblQuyen.Name = "lblQuyen";
             lblQuyen.Size = new Size(51, 19);
             lblQuyen.TabIndex = 7;
@@ -183,7 +182,7 @@ namespace QuanLyBanHang.GUI
             // txtMatKhau
             // 
             txtMatKhau.BorderStyle = BorderStyle.FixedSingle;
-            txtMatKhau.Location = new Point(53, 269);
+            txtMatKhau.Location = new Point(53, 229);
             txtMatKhau.Name = "txtMatKhau";
             txtMatKhau.PlaceholderText = "Nhập mật khẩu";
             txtMatKhau.Size = new Size(342, 25);
@@ -196,7 +195,7 @@ namespace QuanLyBanHang.GUI
             lblMatKhau.AutoSize = true;
             lblMatKhau.Font = new Font("Segoe UI Semibold", 10.5F, FontStyle.Bold, GraphicsUnit.Point);
             lblMatKhau.ForeColor = Color.FromArgb(30, 41, 59);
-            lblMatKhau.Location = new Point(53, 240);
+            lblMatKhau.Location = new Point(53, 200);
             lblMatKhau.Name = "lblMatKhau";
             lblMatKhau.Size = new Size(74, 19);
             lblMatKhau.TabIndex = 5;
@@ -205,7 +204,7 @@ namespace QuanLyBanHang.GUI
             // txtTenDangNhap
             // 
             txtTenDangNhap.BorderStyle = BorderStyle.FixedSingle;
-            txtTenDangNhap.Location = new Point(53, 185);
+            txtTenDangNhap.Location = new Point(53, 145);
             txtTenDangNhap.Name = "txtTenDangNhap";
             txtTenDangNhap.PlaceholderText = "Nhập tên đăng nhập";
             txtTenDangNhap.Size = new Size(342, 25);
@@ -217,21 +216,12 @@ namespace QuanLyBanHang.GUI
             lblTenDangNhap.AutoSize = true;
             lblTenDangNhap.Font = new Font("Segoe UI Semibold", 10.5F, FontStyle.Bold, GraphicsUnit.Point);
             lblTenDangNhap.ForeColor = Color.FromArgb(30, 41, 59);
-            lblTenDangNhap.Location = new Point(53, 156);
+            lblTenDangNhap.Location = new Point(53, 116);
             lblTenDangNhap.Name = "lblTenDangNhap";
             lblTenDangNhap.Size = new Size(109, 19);
             lblTenDangNhap.TabIndex = 3;
             lblTenDangNhap.Text = "Tên đăng nhập";
             // 
-            // labelTaiKhoanMau
-            // 
-            labelTaiKhoanMau.AutoSize = true;
-            labelTaiKhoanMau.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
-            labelTaiKhoanMau.ForeColor = Color.FromArgb(100, 116, 139);
-            labelTaiKhoanMau.Location = new Point(53, 95);
-            labelTaiKhoanMau.Name = "labelTaiKhoanMau";
-            labelTaiKhoanMau.Size = new Size(278, 38);
-            labelTaiKhoanMau.TabIndex = 1;
             labelTaiKhoanMau.Text = "Tài khoản mẫu hiện có trong cơ sở dữ liệu:\r\nadmin / 123 / Admin";
             // 
             // lblTieuDe
