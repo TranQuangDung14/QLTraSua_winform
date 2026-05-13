@@ -16,6 +16,7 @@ namespace QuanLyBanHang.GUI
             AnchorChiTietHoaDon(form);
             AnchorThongKe(form);
             AnchorDangNhap(form);
+            ConfigureNhanVien(form);
         }
 
         private static Size GetMinimumSize(Form form)
@@ -24,7 +25,7 @@ namespace QuanLyBanHang.GUI
             {
                 "frmHoaDon" => new Size(1180, 680),
                 "frmChiTietHoaDon" => new Size(1000, 620),
-                "frmNhanVien" => new Size(1120, 700),
+                "frmNhanVien" => new Size(980, 560),
                 "frmSanPham" => new Size(1080, 680),
                 "frmTrangChu" => new Size(980, 620),
                 "frmDangNhap" => new Size(760, 560),
@@ -198,6 +199,20 @@ namespace QuanLyBanHang.GUI
             SetAnchor(form, "txtMatKhau", AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right);
             SetAnchor(form, "cboQuyen", AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right);
             SetAnchor(form, "lblThongBao", AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right);
+        }
+
+        private static void ConfigureNhanVien(Form form)
+        {
+            if (form.Name != "frmNhanVien")
+            {
+                return;
+            }
+
+            if (Find(form, "panelEditor") is Panel panelEditor)
+            {
+                panelEditor.AutoScroll = true;
+                panelEditor.AutoScrollMargin = new Size(0, 24);
+            }
         }
 
         private static void SetAnchor(Control root, string name, AnchorStyles anchor)
