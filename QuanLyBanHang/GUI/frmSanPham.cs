@@ -10,11 +10,38 @@ namespace QuanLyBanHang.GUI
         private readonly LoaiSanPhamBUS _loaiSanPhamBus = new();
         private readonly NhaCungCapBUS _nhaCungCapBus = new();
         private bool _dangTaiDuLieu;
+        private bool _laAdmin = true;
 
         public frmSanPham()
         {
             InitializeComponent();
             ResponsiveLayout.Configure(this);
+        }
+
+        public frmSanPham(string quyen)
+            : this()
+        {
+            _laAdmin = string.Equals(quyen?.Trim(), "Admin", StringComparison.OrdinalIgnoreCase);
+            ApDungPhanQuyen();
+        }
+
+        private void ApDungPhanQuyen()
+        {
+            if (_laAdmin)
+            {
+                return;
+            }
+
+            txtTenSP.ReadOnly = true;
+            txtMoTa.ReadOnly = true;
+            cboLoaiSanPham.Enabled = false;
+            cboNhaCungCap.Enabled = false;
+            nudDonGia.Enabled = false;
+            nudSoLuong.Enabled = false;
+            btnThem.Visible = false;
+            btnSua.Visible = false;
+            btnXoa.Visible = false;
+            lblThongBao.Text = "Nhân viên chỉ được xem và tìm kiếm danh sách sản phẩm.";
         }
 
         private async void frmSanPham_Load(object sender, EventArgs e)
