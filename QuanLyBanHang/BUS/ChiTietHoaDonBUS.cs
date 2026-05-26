@@ -12,6 +12,16 @@ namespace QuanLyBanHang.BUS
             return _chiTietHoaDonDal.GetDanhSachAsync(tuKhoa.Trim());
         }
 
+        internal Task<List<ChiTietHoaDonDTO>> GetTheoHoaDonAsync(int maHD)
+        {
+            if (maHD <= 0)
+            {
+                throw new ArgumentException("Vui lòng chọn hóa đơn cần in.");
+            }
+
+            return _chiTietHoaDonDal.GetTheoHoaDonAsync(maHD);
+        }
+
         internal Task XoaAsync(int maCTHD)
         {
             if (maCTHD <= 0)

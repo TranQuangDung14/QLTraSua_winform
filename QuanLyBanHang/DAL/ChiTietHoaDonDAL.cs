@@ -5,57 +5,101 @@ namespace QuanLyBanHang.DAL
 {
     internal class ChiTietHoaDonDAL
     {
+        private const string SelectChiTietHoaDon = """
+            SELECT
+                cthd.MaCTHD,
+                cthd.MaHD,
+                cthd.MaSP,
+                ISNULL(sp.TenSP, '') AS TenSP,
+                cthd.SoLuong,
+                cthd.DonGia,
+                cthd.ThanhTien,
+                hd.NgayLap,
+                ISNULL(nv.HoTen, '') AS HoTenNhanVien,
+                ISNULL(kh.HoTen, N'Khách lẻ') AS HoTenKhachHang
+            FROM ChiTietHoaDon cthd
+            INNER JOIN HoaDon hd ON hd.MaHD = cthd.MaHD
+            LEFT JOIN SanPham sp ON sp.MaSP = cthd.MaSP
+            LEFT JOIN NhanVien nv ON nv.MaNV = hd.MaNV
+            LEFT JOIN KhachHang kh ON kh.MaKH = hd.MaKH
+            """;
+
         internal async Task<List<ChiTietHoaDonDTO>> GetDanhSachAsync(string tuKhoa)
         {
-            const string query = """
-                SELECT
-                    cthd.MaCTHD,
-                    cthd.MaHD,
-                    cthd.MaSP,
-                    ISNULL(sp.TenSP, '') AS TenSP,
-                    cthd.SoLuong,
-                    cthd.DonGia,
-                    cthd.ThanhTien,
-                    hd.NgayLap,
-                    ISNULL(nv.HoTen, '') AS HoTenNhanVien,
-                    ISNULL(kh.HoTen, N'Khách lẻ') AS HoTenKhachHang
-                FROM ChiTietHoaDon cthd
-                INNER JOIN HoaDon hd ON hd.MaHD = cthd.MaHD
-                LEFT JOIN SanPham sp ON sp.MaSP = cthd.MaSP
-                LEFT JOIN NhanVien nv ON nv.MaNV = hd.MaNV
-                LEFT JOIN KhachHang kh ON kh.MaKH = hd.MaKH
-                WHERE (@TuKhoa = ''
-                    OR CONVERT(VARCHAR(20), cthd.MaHD) LIKE '%' + @TuKhoa + '%'
-                    OR ISNULL(sp.TenSP, '') LIKE '%' + @TuKhoa + '%'
-                    OR ISNULL(kh.HoTen, N'Khách lẻ') LIKE '%' + @TuKhoa + '%')
-                ORDER BY cthd.MaHD DESC, cthd.MaCTHD DESC;
-                """;
+            var laMaHoaDon = int.TryParse(tuKhoa, out var maHoaDonTimKiem);
+            var query = TaoQuery("""
+                WHERE ((@TuKhoa = ''
+                        AND cthd.MaHD = (
+                            SELECT TOP 1 MaHD
+                            FROM HoaDon
+                            ORDER BY NgayLap DESC, MaHD DESC
+                        ))
+                    OR (@LaMaHoaDon = 1 AND cthd.MaHD = @MaHoaDonTimKiem)
+                    OR (@TuKhoa <> '' AND @LaMaHoaDon = 0
+                        AND (ISNULL(sp.TenSP, '') LIKE '%' + @TuKhoa + '%'
+                            OR ISNULL(kh.HoTen, N'Khách lẻ') LIKE '%' + @TuKhoa + '%')))
+                ORDER BY cthd.MaHD DESC, cthd.MaCTHD DESC
+                """);
 
             var danhSach = new List<ChiTietHoaDonDTO>();
 
             await using var connection = await Database.CreateOpenConnectionAsync();
             await using var command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@TuKhoa", tuKhoa);
+            command.Parameters.AddWithValue("@LaMaHoaDon", laMaHoaDon ? 1 : 0);
+            command.Parameters.AddWithValue("@MaHoaDonTimKiem", laMaHoaDon ? maHoaDonTimKiem : 0);
 
             await using var reader = await command.ExecuteReaderAsync();
             while (await reader.ReadAsync())
             {
-                danhSach.Add(new ChiTietHoaDonDTO
-                {
-                    MaCTHD = reader.GetInt32(reader.GetOrdinal("MaCTHD")),
-                    MaHD = reader.GetInt32(reader.GetOrdinal("MaHD")),
-                    MaSP = reader.GetInt32(reader.GetOrdinal("MaSP")),
-                    TenSP = reader["TenSP"]?.ToString() ?? string.Empty,
-                    SoLuong = Convert.ToInt32(reader["SoLuong"]),
-                    DonGia = Convert.ToDecimal(reader["DonGia"]),
-                    ThanhTien = Convert.ToDecimal(reader["ThanhTien"]),
-                    NgayLap = reader["NgayLap"] == DBNull.Value ? null : Convert.ToDateTime(reader["NgayLap"]),
-                    HoTenNhanVien = reader["HoTenNhanVien"]?.ToString() ?? string.Empty,
-                    HoTenKhachHang = reader["HoTenKhachHang"]?.ToString() ?? string.Empty
-                });
+                danhSach.Add(DocChiTietHoaDon(reader));
             }
 
             return danhSach;
+        }
+
+        internal async Task<List<ChiTietHoaDonDTO>> GetTheoHoaDonAsync(int maHD)
+        {
+            var query = TaoQuery("""
+                WHERE cthd.MaHD = @MaHD
+                ORDER BY cthd.MaCTHD
+                """);
+
+            var danhSach = new List<ChiTietHoaDonDTO>();
+
+            await using var connection = await Database.CreateOpenConnectionAsync();
+            await using var command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@MaHD", maHD);
+
+            await using var reader = await command.ExecuteReaderAsync();
+            while (await reader.ReadAsync())
+            {
+                danhSach.Add(DocChiTietHoaDon(reader));
+            }
+
+            return danhSach;
+        }
+
+        private static string TaoQuery(string dieuKienVaSapXep)
+        {
+            return $"{SelectChiTietHoaDon}{Environment.NewLine}{dieuKienVaSapXep}";
+        }
+
+        private static ChiTietHoaDonDTO DocChiTietHoaDon(SqlDataReader reader)
+        {
+            return new ChiTietHoaDonDTO
+            {
+                MaCTHD = reader.GetInt32(reader.GetOrdinal("MaCTHD")),
+                MaHD = reader.GetInt32(reader.GetOrdinal("MaHD")),
+                MaSP = reader.GetInt32(reader.GetOrdinal("MaSP")),
+                TenSP = reader["TenSP"]?.ToString() ?? string.Empty,
+                SoLuong = Convert.ToInt32(reader["SoLuong"]),
+                DonGia = Convert.ToDecimal(reader["DonGia"]),
+                ThanhTien = Convert.ToDecimal(reader["ThanhTien"]),
+                NgayLap = reader["NgayLap"] == DBNull.Value ? null : Convert.ToDateTime(reader["NgayLap"]),
+                HoTenNhanVien = reader["HoTenNhanVien"]?.ToString() ?? string.Empty,
+                HoTenKhachHang = reader["HoTenKhachHang"]?.ToString() ?? string.Empty
+            };
         }
 
         internal async Task XoaAsync(int maCTHD)
