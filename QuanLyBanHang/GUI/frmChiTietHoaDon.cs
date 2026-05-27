@@ -10,7 +10,6 @@ namespace QuanLyBanHang.GUI
         private readonly HoaDonBUS _hoaDonBus = new();
         private List<ChiTietHoaDonDTO> _chiTietDangIn = [];
         private HoaDonDTO? _hoaDonDangChon;
-        private int _dongInHienTai;
         private bool _dangTaiDuLieu;
         private bool _dangXemChiTiet;
 
@@ -226,7 +225,6 @@ namespace QuanLyBanHang.GUI
                     return;
                 }
 
-                _dongInHienTai = 0;
                 using var printDocument = new PrintDocument
                 {
                     DocumentName = $"HoaDon_{_hoaDonDangChon.MaHD}"
@@ -368,23 +366,22 @@ namespace QuanLyBanHang.GUI
                 ("Thành tiền", cotThanhTien, 130));
             y += chieuCaoDong;
 
-            while (_dongInHienTai < _chiTietDangIn.Count)
+            for (var i = 0; i < _chiTietDangIn.Count; i++)
             {
                 if (y + chieuCaoDong + 70 > bounds.Bottom)
                 {
-                    e.HasMorePages = true;
-                    return;
+                    g.DrawString($"Còn {_chiTietDangIn.Count - i} dòng sản phẩm chưa hiển thị.", fontNho, brush, cotSanPham, y + 8);
+                    break;
                 }
 
-                var chiTiet = _chiTietDangIn[_dongInHienTai];
+                var chiTiet = _chiTietDangIn[i];
                 VeDongBang(g, pen, brush, fontNho, y, chieuCaoDong,
-                    ((_dongInHienTai + 1).ToString(), cotStt, 45),
+                    ((i + 1).ToString(), cotStt, 45),
                     (chiTiet.TenSP, cotSanPham, 270),
                     (chiTiet.SoLuong.ToString(), cotSoLuong, 85),
                     ($"{chiTiet.DonGia:N0}", cotDonGia, 120),
                     ($"{chiTiet.ThanhTien:N0}", cotThanhTien, 130));
                 y += chieuCaoDong;
-                _dongInHienTai++;
             }
 
             var tongTien = _chiTietDangIn.Sum(x => x.ThanhTien);
